@@ -21,7 +21,7 @@ VOC_CLASSES = (  # always index 0
     'product')
 
 # note: if you used our download scripts, this should be right
-VOC_ROOT = "../../VOCdevkit"
+VOC_ROOT = "./../VOCdevkit"
 
 
 class VOCAnnotationTransform(object):
