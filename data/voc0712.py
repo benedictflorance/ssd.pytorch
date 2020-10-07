@@ -105,7 +105,6 @@ class VOCDetection(data.Dataset):
         for (year, name) in image_sets:
             rootpath = osp.join(self.root, 'VOC' + year)
             for line in open(osp.join(rootpath, 'ImageSets', 'Main', name + '.txt')):
-                print(line)
                 self.ids.append((rootpath, line.strip()))
 
     def __getitem__(self, index):
@@ -118,6 +117,7 @@ class VOCDetection(data.Dataset):
 
     def pull_item(self, index):
         img_id = self.ids[index]
+        print(img_id)
 
         target = ET.parse(self._annopath % img_id).getroot()
         img = cv2.imread(self._imgpath % img_id)
