@@ -71,7 +71,7 @@ imgpath = os.path.join(args.voc_root, 'VOC2007', 'JPEGImages', '%s.jpg')
 imgsetpath = os.path.join(args.voc_root, 'VOC2007', 'ImageSets',
                           'Main', '{:s}.txt')
 YEAR = '2007'
-devkit_path = os.path.join(args.voc_root + 'VOC2007')
+devkit_path = os.path.join(args.voc_root,'VOC2007')
 dataset_mean = (104, 117, 123)
 set_type = 'test'
 
