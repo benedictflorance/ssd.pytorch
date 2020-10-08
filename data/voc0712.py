@@ -66,6 +66,8 @@ class VOCAnnotationTransform(object):
                 # scale height or width
                 cur_pt = cur_pt / width if i % 2 == 0 else cur_pt / height
                 bndbox.append(cur_pt)
+            for key,value in self.class_to_ind.items():
+                print(key, value)
             label_idx = self.class_to_ind[name]
             bndbox.append(label_idx)
             res += [bndbox]  # [xmin, ymin, xmax, ymax, label_ind]
@@ -118,7 +120,6 @@ class VOCDetection(data.Dataset):
     def pull_item(self, index):
         img_id = self.ids[index]
         target = ET.parse(self._annopath % img_id).getroot()
-        print("Is path valid?", os.path.isfile(self._imgpath % img_id))
         img = cv2.imread(self._imgpath % img_id)
         height, width, channels = img.shape
 
