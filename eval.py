@@ -175,8 +175,6 @@ def do_python_eval(output_dir='output', use_07=True):
            ovthresh=0.5, use_07_metric=use_07_metric)
         aps += [ap]
         print('AP for {} = {:.4f}'.format(cls, ap))
-        print('Precision for {} = {:.4f}'.format(cls, prec))
-        print('Recall for {} = {:.4f}'.format(cls, rec))
         with open(os.path.join(output_dir, cls + '_pr.pkl'), 'wb') as f:
             pickle.dump({'rec': rec, 'prec': prec, 'ap': ap}, f)
     print('Mean AP = {:.4f}'.format(np.mean(aps)))
