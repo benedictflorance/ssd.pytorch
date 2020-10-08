@@ -116,8 +116,7 @@ class SSD(nn.Module):
         other, ext = os.path.splitext(base_file)
         if ext == '.pkl' or '.pth':
             print('Loading weights into state dict...')
-            self.load_state_dict(torch.load(base_file,
-                                 map_location=lambda storage, loc: storage))
+            self.load_state_dict(torch.load(base_file))
             # pretrained_dict = torch.load(base_file,
             #                      map_location=lambda storage, loc: storage)
             # pretrained_dict = {k:v for k, v in pretrained_dict.items() if k not in ['conf.0.weight', 'conf.1.weight', 'conf.2.weight', 'conf.3.weight', 'conf.4.weight', 'conf.5.weight', 'conf.0.bias', 'conf.1.bias', 'conf.2.bias', 'conf.3.bias', 'conf.4.bias', 'conf.5.bias']}
