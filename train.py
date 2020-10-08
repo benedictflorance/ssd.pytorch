@@ -74,7 +74,7 @@ def train():
         dataset = VOCDetection(root=args.dataset_root,
                                transform=SSDAugmentation(cfg['min_dim'],
                                                          MEANS))
-    print("Minimum number of dimensions" cfg['min_dim'])
+    print("Minimum number of dimensions", cfg['min_dim'])
     print("Number of classes", cfg['num_classes'])
     if args.visdom:
         import visdom
