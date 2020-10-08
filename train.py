@@ -89,8 +89,7 @@ def train():
 
     if args.resume:
         print('Resuming training, loading {}...'.format(args.resume))
-        ssd_net.load_state_dict(torch.load(args.resume))
-        #ssd_net.load_weights(args.resume)
+        ssd_net.load_weights(args.resume)
         # ssd_net.conf.apply(weights_init)
     else:
         vgg_weights = torch.load(args.save_folder + args.basenet)
