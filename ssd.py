@@ -96,12 +96,14 @@ class SSD(nn.Module):
         loc = torch.cat([o.view(o.size(0), -1) for o in loc], 1)
         conf = torch.cat([o.view(o.size(0), -1) for o in conf], 1)
         if self.phase == "test":
-            output = self.detect(
+            output = self.detect.apply(self.num_classes, 0, 200, 0.01, 0.45,
+            # PyTorch1.5.0 support new-style autograd function
                 loc.view(loc.size(0), -1, 4),                   # loc preds
                 self.softmax(conf.view(conf.size(0), -1,
                              self.num_classes)),                # conf preds
                 self.priors.type(type(x.data))                  # default boxes
             )
+
         else:
             output = (
                 loc.view(loc.size(0), -1, 4),
