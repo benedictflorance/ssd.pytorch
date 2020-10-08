@@ -116,6 +116,7 @@ class VOCDetection(data.Dataset):
         return len(self.ids)
 
     def pull_item(self, index):
+        print('Entered pull_item')
         img_id = self.ids[index]
         target = ET.parse(self._annopath % img_id).getroot()
         print("Is path valid?", os.path.isfile(self._imgpath % img_id))
