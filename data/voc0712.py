@@ -108,20 +108,16 @@ class VOCDetection(data.Dataset):
                 self.ids.append((rootpath, line.strip()))
 
     def __getitem__(self, index):
-        print("Index: " ,index)
         im, gt, h, w = self.pull_item(index)
-
         return im, gt
 
     def __len__(self):
         return len(self.ids)
 
     def pull_item(self, index):
-        for x in self.ids:
-            print(x)
         img_id = self.ids[index]
-        print(img_id, self._annopath % img_id, self._imgpath % img_id)
         target = ET.parse(self._annopath % img_id).getroot()
+        print("Is path valid?", os.path.isfile(self._imgpath % img_id))
         img = cv2.imread(self._imgpath % img_id)
         height, width, channels = img.shape
 
